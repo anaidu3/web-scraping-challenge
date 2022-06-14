@@ -88,6 +88,7 @@ def scrape():
             "fact_table": html_table,
             "hemisphere_images": hemisphere_image_urls
         }
+    print(mars_dict)
     return(mars_dict)
     browser.quit()
     
