@@ -22,7 +22,6 @@ def index():
 
 @app.route("/scrape")
 def scrape():
-    
     #create a mars database
     mars = mongo.db.mars
     
@@ -30,8 +29,8 @@ def scrape():
     scraped_data = scrape_mars.scrape()
     
     #Update the Mongo database using update and upsert=True
-    mars.update({},scraped_data, upsert=True)
-    return redirect("/", code=302)
+    mars.insert_one(scraped_data)
+    return index()
 
 if __name__ == "__main__":
     app.run(debug=True)
